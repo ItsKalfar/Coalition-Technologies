@@ -1,13 +1,415 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@100;300;400;700;900&family=Oswald:wght@200;300;400;500;600;700&display=swap");
+
+:root {
+  --font-bebas: "Bebas Neue", cursive;
+  --font-lato: "Lato", sans-serif;
+  --font-oswald: "Oswald", sans-serif;
+  --blue: #414f6b;
+  --black: #4d4d4d;
+  --gray: #b0b4be;
+}
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a,
+a:active,
+a:visited {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-size: 1rem;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.container {
+  width: 94%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+  z-index: 100;
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 0rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo p {
+  color: var(--black);
+  font-family: var(--font-bebas);
+  line-height: 0.8;
+  font-size: 1.4rem;
+  margin-left: 0.5rem;
+}
+
+.logo p span {
+  color: var(--blue);
+}
+
+nav .container p {
+  flex-direction: column;
+}
+
+nav .container ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  margin-right: 0.5rem;
+}
+
+nav .container ul li a {
+  font-family: var(--font-lato);
+  font-style: italic;
+  position: relative;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+}
+
+nav .container ul li a::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 2px;
+  left: 0;
+  right: 0;
+  width: 0%;
+  bottom: -5px;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+nav .container ul li a:hover::before {
+  width: 100%;
+}
+
+nav .container ul li a:active::before {
+  width: 100%;
+}
+
+.logo p {
+  display: none;
+}
+
+nav.active {
+  background-color: #fff;
+}
+
+nav.active .logo p {
+  display: flex;
+}
+
+nav.active .container ul li a {
+  color: var(--blue);
+}
+
+nav.active .container ul li a::before {
+  background-color: var(--blue);
+}
+
+section {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+#home {
+  background-image: url(./assets/hero-bg.png);
+  justify-content: center;
+}
+
+#home .container h1 {
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 5rem;
+  margin-top: -2rem;
+  font-family: var(--font-bebas);
+  display: flex;
+  flex-direction: column;
+  line-height: 0.8;
+  color: var(--black);
+}
+
+#home .container h1 span {
+  color: var(--blue);
+}
+
+#history {
+  background-image: url(./assets/history-bg.png);
+  flex-direction: column;
+}
+
+#history .container {
+  min-height: 100vh;
+  padding-top: 6rem;
+}
+
+.carousel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #414f6be5;
+  cursor: pointer;
+}
+
+.carousel-container {
+  max-width: 360px;
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+}
+
+.carousel-container > * {
+  scroll-snap-align: start;
+}
+
+.carousel-container::-webkit-scrollbar {
+  width: 0px;
+}
+
+.carousel-container img {
+  min-width: 360px;
+  margin-top: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.section-sub-heading {
+  font-size: 6rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  position: relative;
+  font-family: var(--font-oswald);
+  color: var(--blue);
+  opacity: 0.6;
+}
+
+.section-sub-heading span {
+  font-size: 1.5rem;
+  position: absolute;
+  margin-left: -1.25rem;
+  bottom: 32%;
+  color: var(--blue);
+  opacity: 1;
+}
+
+.section-desc {
+  font-family: var(--font-lato);
+  color: var(--black);
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+#team {
+  background-image: url(./assets/climb-bg.png);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mountain {
+  background-color: var(--blue);
+  color: #fff;
+  font-family: var(--font-oswald);
+  font-size: 1.5rem;
+}
+
+.mountain-container {
+  max-width: 1250px;
+  width: 90%;
+  margin: 0 auto;
+}
+.mountain ul {
+  width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mountain ul li {
+  color: var(--gray);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.mountain ul li.active {
+  color: var(--blue);
+  background-color: var(--gray);
+  text-decoration: underline;
+}
+
+.schedule-section {
+  background-color: #ffffffbd;
+  margin-top: -10rem;
+  padding: 1rem 2rem;
+  max-width: 375px;
+}
+
+.schedule-section h3 {
+  font-family: var(--font-oswald);
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+.schedule-info ul li {
+  font-family: var(--font-lato);
+  font-weight: 300;
+  color: var(--black);
+  display: flex;
+  justify-content: space-between;
+}
+.schedule-info ul li:nth-child(2) {
+  margin-bottom: 1rem;
+}
+.schedule-info ul li:nth-child(3) {
+  margin-bottom: 1rem;
+}
+
+footer {
+  background-color: var(--blue);
+  padding: 1rem 0rem;
+}
+
+footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer .container .footer-logo {
+  display: flex;
+}
+
+.footer-logo img {
+  mix-blend-mode: overlay;
+}
+
+.footer-logo p {
+  color: var(--blue);
+  font-family: var(--font-bebas);
+  line-height: 0.8;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  mix-blend-mode: overlay;
+}
+
+.copyright {
+  font-family: var(--font-lato);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--blue);
+  mix-blend-mode: overlay;
+}
+
+@media screen and (min-width: 768px) {
+  nav .container ul {
+    width: 25%;
+  }
+
+  #home .container h1 {
+    font-size: 10rem;
+    margin-left: 6rem;
+    margin-top: -7rem;
+  }
+
+  #history .container {
+    max-width: 1100px;
+    width: 95%;
+  }
+
+  .section-sub-heading {
+    font-size: 10rem;
+  }
+
+  .section-sub-heading span {
+    font-size: 3rem;
+    margin-left: -2.2rem;
+  }
+
+  .section-desc {
+    font-size: 1.2rem;
+    margin-top: -1rem;
+    margin-left: 5.5rem;
+  }
+
+  .carousel-container {
+    max-width: 720px;
+  }
+
+  .schedule-section {
+    max-width: 450px;
+  }
+
+  .schedule-section h3 {
+    font-size: 3rem;
+  }
+
+  .schedule-info ul li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .schedule-info ul li:nth-child(2) {
+    margin-bottom: 2rem;
+  }
+  .schedule-info ul li:nth-child(3) {
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .carousel-container {
+    max-width: 1250px;
+  }
+
+  #home .container h1 {
+    margin-left: 12rem;
+  }
+
+  .carousel-container img {
+    min-width: 312px;
+  }
 }

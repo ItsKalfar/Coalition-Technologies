@@ -1,6 +1,7 @@
 {
   "name": "coalition",
   "version": "0.1.0",
+  "author": "Sagar Gund",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
